@@ -11,7 +11,7 @@ import twilio.twiml
 part0 = [
 	("f1", "Hello. Thank you for calling The Real Estate Survey. The Real Estate Survey attempts to quantify the effect of the real estate market on today's arts ecosystem by specifically looking at the percentage of income that is absorbed by the real estate market from both individuals and organizations in the arts."),
 	(1,),
-	("f1", "Almost every art worker that answered our earlier survey, lives with housing stress. We want to know about you. Do you spend more than 30% of your income on rent? Press 1 for YES and 2 for NO followed by the pound key.", "/q01")
+	("f1", "In a previous survey conducted online by the creators, it was found that 82% of artists and art workers in Melbourne who answered the survey live under rent stress. We want to know about you. Do you spend more than 30% of your income on rent? Press 1 for YES and 2 for NO followed by the pound key.", "/q01")
 ]
 
 part0_again = [
@@ -44,7 +44,7 @@ part1b = [
 	(1,),
 	("f1", "Are you sure that you are an art worker? Please press "),
 	(1,),
-	("m", "Everyone is an artist. This is a city of creativity and innovation."), 
+	("m", "Everyone is an artist. This city is a world-renowned centre of creativity and innovation. Whether it is doing home decorating or designing a new app."), 
 	(1,),
 	("f1", "Who are you?"),
 	("m", "I'm just someone who thinks we can have it all. Art, coffee, high property values. We just need to work together."),
@@ -89,9 +89,9 @@ part4_again = [
 ]
 
 part5 = [
-	("f1", "The feeling of loneliness keeps us apart."),
+	("f1", "This sense of loneliness can be paralysing and isolating for anyone."),
 	(1,),
-	("f2", "Yes, loneliness is another symptom of stress. The idea of the collective has been put under so much stress that is has broken into pieces. We think of ourselves as individuals."),
+	("f2", "Yes, loneliness is another symptom of stress. The idea of the collective has been put under so much stress that is has broken into pieces. We think of ourselves as individuals instead of seeking collective intelligence to start and shift our relationship to collective stress."),
 	(1,),
 	("f1", "We imagine that our trouble is ours alone. We think we are at fault."),
 	(1,),
@@ -123,7 +123,7 @@ part6_again = [
 ]
 
 part7 = [
-	("f2", "Most of us are so used to being stressed, we often don't know we are stressed until we are at the breaking point."),
+	("f2", "Most of us are stressed. I know that this juggling of time can be stressful for any artist, anybody really. We often are so used to it that we don't realise we are stressed until we reach a breaking point."),
 	(1,),
 	("m", "You can't feel stress. You are a robot."),
 	(1,),
@@ -151,11 +151,13 @@ part7_again = [
 ]
 
 part8a = [
-	("m", "That's right. The caller and I are just everyday people who think we can have it all. Art, coffee, high property values. We just need to work together."),
+	("m", "That's right. The caller and I are just everyday people who know we can have it all. Art, coffee, high property values. We just need to work together to ensure these processes develop simultaneously."),
+	(1,),
+	("m", "Artists, like everyone else, love coffee and nice cafes, artists assist in this process. Lets remember what we are talking about, real estate, what could be more EXCITING! There is a brighter future through private ownership and continuing to grow the economy through the real estate market."),
 	(1,),
 	("f1", "You would never work with anyone. You prefer gated communities, private police forces, and putting your money offshore."),
 	(1,),
-	("m", "What I mean is that we shouldn't be fighting. That attitude is the problem."),
+	("m", "What I mean is that we shouldn't be fighting. That attitude is the problem. My dear caller, don’t forget that you have a stake in this real estate market, an important role, whether you are a renter, a home owner or an investor. All these components help shape our ever growing housing market."),
 	(1,),
 	("f1", "The problem is with capitalism and private property."),
 	(1,),
@@ -338,7 +340,8 @@ class Survey(object):
 	def q01(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part0_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -353,7 +356,8 @@ class Survey(object):
 	def q02(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part1_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -369,7 +373,8 @@ class Survey(object):
 	def q03(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part2_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -384,7 +389,8 @@ class Survey(object):
 	def q04(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part3)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -400,7 +406,8 @@ class Survey(object):
 	def q05(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part4_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -415,7 +422,8 @@ class Survey(object):
 	def q06(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part5_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -430,7 +438,8 @@ class Survey(object):
 	def q07(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part6_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -445,7 +454,8 @@ class Survey(object):
 	def q08(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part7_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -460,7 +470,8 @@ class Survey(object):
 	def q09(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part8_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -475,7 +486,8 @@ class Survey(object):
 	def q10(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part9_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
@@ -490,7 +502,8 @@ class Survey(object):
 	def q10(self, *args, **kwargs):
 		r = twilio.twiml.Response()
 		if not 'Digits' in kwargs:
-			r.say("Ooops there is a problem")
+			#r.say("Ooops there is a problem")
+			say_script(r, part10_again)
 			return str(r)
 		d = kwargs['Digits']
 		if d=="1": # YES
